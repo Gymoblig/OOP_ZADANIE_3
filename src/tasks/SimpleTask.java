@@ -23,6 +23,7 @@ public class SimpleTask extends AbstractTask {
         return finished;
     }
     
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

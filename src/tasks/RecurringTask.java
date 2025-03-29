@@ -5,6 +5,7 @@ public class RecurringTask extends AbstractTask {
     private Integer numberOfRuns; // null znamená nekonečné opakovanie
     private long nextRunTick;
 
+    
     public RecurringTask(String description, long startTick, long delayBetweenRuns, Integer numberOfRuns) {
         super(description, startTick);
         assert delayBetweenRuns > 0 : "Delay between runs must be positive";

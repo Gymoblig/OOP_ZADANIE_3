@@ -28,6 +28,7 @@ public abstract class AbstractTask {
         return message;
     }
 
+    
     public abstract void run(); // Abstraktná metóda, ktorá musí byť implementovaná v podtriedach
     public boolean isScheduledAt(long currentTick) {
         return currentTick == runAtTick;

@@ -17,5 +17,6 @@ public class Main {
         System.out.println(taskHandler.getTaskIndex(t3)+": "+t3.getId());
         taskHandler.tickLoop(6);
         
+        
     }
 }
