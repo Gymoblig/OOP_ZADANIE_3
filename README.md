@@ -52,3 +52,4 @@ handler.addTask(new RecurringTask("Brush teeth", 1, 2, 3)); // Runs at ticks 1,3
 
 // Run simulation
 handler.tickLoop(6);
+
