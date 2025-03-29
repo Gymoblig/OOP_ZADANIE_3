@@ -1,18 +1,54 @@
-## Getting Started
+# Task Management System
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A Java-based task scheduling and execution system that handles both one-time and recurring tasks.
 
-## Folder Structure
+## Features
 
-The workspace contains two folders by default, where:
+- **Task Types**:
+  - `SimpleTask`: One-time execution tasks
+  - `RecurringTask`: Tasks that repeat at specified intervals
+- **Task Handler**:
+  - Manages task execution in tick-based cycles
+  - Automatic removal of completed tasks
+  - Thread-safe task operations
+- **ID Generation**: Automatic unique ID generation for all tasks
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Class Structure
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+### Core Classes
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+1. **AbstractTask** (Abstract Base Class)
+   - Properties: `message`, `runAtTick`, `taskId`
+   - Key Methods: `isScheduledAt()`, `run()`, `isFinished()`
+   
+2. **SimpleTask** (Concrete Class)
+   - Executes once at specified tick
+   - Auto-removes after execution
 
-## Dependency Management
+3. **RecurringTask** (Concrete Class)
+   - Repeats at fixed intervals
+   - Configurable number of repetitions (or infinite)
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+4. **TaskHandler**
+   - Manages task lifecycle:
+     - `addTask()`
+     - `removeTask()`
+     - `tickLoop()`
+   - Maintains task array with automatic resizing
+
+### Support Classes
+
+- `TaskIdGenerator`: Generates unique task IDs
+
+## Usage Example
+
+```java
+// Create handler
+TaskHandler handler = new TaskHandler();
+
+// Add tasks
+handler.addTask(new SimpleTask("Buy groceries", 1));
+handler.addTask(new RecurringTask("Brush teeth", 1, 2, 3)); // Runs at ticks 1,3,5
+
+// Run simulation
+handler.tickLoop(6);
