@@ -51,10 +51,13 @@ public class RecurringTask extends AbstractTask {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        SimpleTask that = (SimpleTask) obj;
-        return getRunAtTick() == that.getRunAtTick() && getMessage().equals(that.getMessage());
-    }
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+            RecurringTask that = (RecurringTask) obj;
+            return getRunAtTick() == that.getRunAtTick() 
+                && getNumberOfRuns() == that.getNumberOfRuns()
+                && getDelayBetweenRuns() == that.getDelayBetweenRuns()
+                && getMessage().equals(that.getMessage());
+        }
 }

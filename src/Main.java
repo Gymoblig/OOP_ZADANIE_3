@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         SimpleTask t1 = new SimpleTask("Vyvenčiť Dunča", 2);
         SimpleTask t2 = new SimpleTask("Vystreliť si mozog z hlavy", 1);
-        RecurringTask t3 = new RecurringTask("Umyť si chrup", 2, 2, 2);
+        RecurringTask t3 = new RecurringTask("Umyť si chrup", 0, 1, 50);
         TaskHandler taskHandler = new TaskHandler();
         taskHandler.addTask(t1);
         taskHandler.addTask(t2);
@@ -15,7 +15,7 @@ public class Main {
         System.out.println(taskHandler.getTaskIndex(t1)+": "+t1.getId());
         System.out.println(taskHandler.getTaskIndex(t2)+": "+t2.getId());
         System.out.println(taskHandler.getTaskIndex(t3)+": "+t3.getId());
-        taskHandler.tickLoop(6);
+        taskHandler.tickLoop(13);
         
         
     }
