@@ -1,19 +1,19 @@
 package tasks;
 
 public abstract class AbstractTask {
-    private final String message;
-    private final long runAtTick;
-    private final String taskId;
+    protected String message;
+    protected long runAtTick;
+    private String id;
     public abstract boolean isFinished();
 
     public AbstractTask(String message, long runAtTick) {
         // Overenie podmienok pomocou assert
-        assert message != null && !message.isEmpty() : "Správa nemôže byť prázdna alebo null"; 
-        assert runAtTick >= 0 : "runAtTick nesmie byť záporný";
+        assert message != null && !message.isEmpty(); 
+        assert runAtTick >= 0;
         
         this.message = message;
         this.runAtTick = runAtTick;
-        this.taskId = TaskIdGenerator.generateTaskId(this);
+        this.id = TaskIdGenerator.generateTaskId(this);
     }
 
     public long getRunAtTick() {
@@ -21,7 +21,7 @@ public abstract class AbstractTask {
     }
 
     public String getId() {
-        return this.taskId;
+        return this.id;
     }
 
     public String getMessage() {

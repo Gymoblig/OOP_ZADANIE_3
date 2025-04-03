@@ -12,9 +12,7 @@ public class TaskHandler {
         if (tasksIndex < MAXIMUM_TASKS) {
             tasks[tasksIndex] = task;
             tasksIndex++;
-        } else {
-            throw new IllegalStateException("Uz nie je volne miesto na pridanie Tasku");
-        }
+        } 
     }
     
     public void removeTask(AbstractTask task){

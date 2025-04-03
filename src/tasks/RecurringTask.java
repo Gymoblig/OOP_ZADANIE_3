@@ -1,19 +1,19 @@
 package tasks;
 
 public class RecurringTask extends AbstractTask {
-    private final long delayBetweenRuns;
+    private long delayBetweenRuns;
     private Integer numberOfRuns; // null znamená nekonečné opakovanie
     private long nextRunTick;
 
     
-    public RecurringTask(String description, long startTick, long delayBetweenRuns, Integer numberOfRuns) {
-        super(description, startTick);
-        assert delayBetweenRuns > 0 : "Delay between runs must be positive";
-        assert numberOfRuns == null || numberOfRuns > 0 : "Number of runs must be null or positive";
+    public RecurringTask(String message, long runAtTick, long delayBetweenRuns, Integer numberOfRuns) {
+        super(message, runAtTick);
+        assert delayBetweenRuns > 0;
+        assert numberOfRuns == null || numberOfRuns > 0;
 
         this.delayBetweenRuns = delayBetweenRuns;
         this.numberOfRuns = numberOfRuns;
-        this.nextRunTick = startTick;
+        this.nextRunTick = runAtTick;
     }
 
     @Override
@@ -51,13 +51,10 @@ public class RecurringTask extends AbstractTask {
     }
 
     @Override
-        public boolean equals(Object obj) {
-            if (this == obj) return true;
-            if (obj == null || getClass() != obj.getClass()) return false;
-            RecurringTask that = (RecurringTask) obj;
-            return getRunAtTick() == that.getRunAtTick() 
-                && getNumberOfRuns() == that.getNumberOfRuns()
-                && getDelayBetweenRuns() == that.getDelayBetweenRuns()
-                && getMessage().equals(that.getMessage());
-        }
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        RecurringTask fessSpravne = (RecurringTask) obj;
+        return this.getId().equals(fessSpravne.getId());
+    }
 }
